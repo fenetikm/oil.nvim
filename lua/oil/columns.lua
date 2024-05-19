@@ -226,7 +226,9 @@ if has_devicons then
         end
         icon, hl = devicons.get_icon(name)
         icon = icon or (conf and conf.default_file or "")
-        icon = ' '
+
+        icon = ''
+        hl = 'None'
       end
       if not conf or conf.add_padding ~= false then
         icon = icon .. " "

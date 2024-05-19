@@ -224,11 +224,16 @@ if has_devicons then
         if meta and meta.display_name then
           name = meta.display_name
         end
-        icon, hl = devicons.get_icon(name)
-        icon = icon or (conf and conf.default_file or "")
-
-        icon = ''
-        hl = 'None'
+        if conf and conf.directory_only then
+          icon = '-'
+          if conf.file_icon then
+            icon = conf.file_icon
+          end
+          hl = 'OilNoIcon'
+        else
+          icon, hl = devicons.get_icon(name)
+          icon = icon or (conf and conf.default_file or "")
+        end
       end
       if not conf or conf.add_padding ~= false then
         icon = icon .. " "
